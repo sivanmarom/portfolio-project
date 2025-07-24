@@ -14,6 +14,8 @@ export default function Navigation() {
       <a href="#about" className="text-gray-800 font-semibold hover:text-blue-600">
         About
       </a>
+       <a href="#skills" className="text-gray-800 font-semibold hover:text-blue-600">Skills</a>
+       <a href="#resume" className="text-gray-800 font-semibold hover:text-blue-600">Resume</a>
       <a href="#projects" className="text-gray-800 font-semibold hover:text-blue-600">Projects</a>
     <a href="#contact" className="text-gray-800 font-semibold hover:text-blue-600">Contact</a>
     </motion.nav>
