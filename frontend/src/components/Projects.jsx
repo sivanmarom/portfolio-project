@@ -22,22 +22,28 @@ export default function Projects() {
   return (
     <motion.section
       id="projects"
-      className="p-8 bg-gray-100"
+      className="py-16 px-6 w-full bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-3xl font-bold text-center mb-8">Projects</h2>
-      <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <h2 className="text-4xl font-bold text-center mb-12">Projects</h2>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition duration-300"
+            className="bg-white/10 backdrop-blur p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-white/10"
             whileHover={{ scale: 1.03 }}
           >
-            <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-            <p className="text-gray-700 mb-4">{project.description}</p>
-            <a href={project.link} target="_blank" className="text-blue-600 font-medium hover:underline">
+            <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+            <p className="text-white/90 mb-4">{project.description}</p>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-300 hover:text-blue-400 font-medium transition"
+            >
               View on GitHub →
             </a>
           </motion.div>

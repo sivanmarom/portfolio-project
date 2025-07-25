@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen h-full flex flex-col md:flex-row items-center justify-center px-6 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white gap-0"
+      className="min-h-screen h-full flex flex-col md:flex-row items-center justify-center px-6 bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white gap-0"
     >
       {/* LEFT: Avatar */}
       <div className="w-[180px] h-[400px] flex items-center justify-center">
@@ -51,13 +51,13 @@ export default function Hero() {
           <a
             href="https://github.com/sivanmarom"
             target="_blank"
-            className="bg-white text-black px-6 py-2 rounded-xl shadow hover:bg-gray-200 transition"
+            className="bg-white text-[#0f2027] px-6 py-2 rounded-xl hover:bg-gray-200 transition"
           >
             GitHub
           </a>
           <a
             href="#projects"
-            className="bg-purple-700 text-white px-6 py-2 rounded-xl shadow hover:bg-purple-800 transition"
+           className="bg-[#145174] text-white px-6 py-2 rounded-xl shadow hover:bg-[#0b2e42] transition"
           >
             See My Work
           </a>
@@ -67,7 +67,11 @@ export default function Hero() {
           >
             Contact Me
           </a>
+          
         </div>
+        <p className="mt-8 text-white text-lg italic">
+  "Building bridges between code, infrastructure & people."
+</p>
       </div>
     </section>
   );

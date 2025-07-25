@@ -43,27 +43,32 @@ export default function Skills() {
   return (
     <motion.section
       id="skills"
-      className="py-16 px-8 bg-gray-50 text-gray-800 text-center"
+      className="w-full py-16 px-6 bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-3xl font-bold mb-10">Skills & Technologies</h2>
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-10">Skills & Technologies</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-        {skillData.map(({ category, skills }) => (
-          <div key={category}>
-            <h3 className="text-xl font-semibold mb-4">{category}</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {skills.map(({ name, icon }) => (
-                <div key={name} className="flex items-center gap-2 bg-white px-4 py-2 rounded shadow">
-                  {icon}
-                  <span className="font-medium">{name}</span>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {skillData.map(({ category, skills }) => (
+            <div key={category}>
+              <h3 className="text-xl font-semibold mb-4">{category}</h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                {skills.map(({ name, icon }) => (
+                  <div
+                    key={name}
+                    className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded shadow text-white"
+                  >
+                    {icon}
+                    <span className="font-medium">{name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </motion.section>
   );
