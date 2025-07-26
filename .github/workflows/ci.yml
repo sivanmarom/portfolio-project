@@ -17,23 +17,17 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Set up Docker Compose
+      - name: Docker Compose Up
         run: |
-          docker-compose --version
-
-      - name: Build and run with Docker Compose
-        run: |
-          docker-compose up -d --build
-          echo "Waiting for containers to start..."
+          docker compose up -d --build
+          echo "Waiting for containers to be ready..."
           sleep 15
 
       - name: Test backend API
-        run: |
-          curl --fail http://localhost:5000/api/hello
+        run: curl --fail http://localhost:5000/api/hello
 
-      - name: Test frontend build
-        run: |
-          curl --fail http://localhost:3000
+      - name: Test frontend response
+        run: curl --fail http://localhost:3000
 
-      - name: Shut down services
-        run: docker-compose down
+      - name: Shutdown Docker Compose
+        run: docker compose down
