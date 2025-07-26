@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import AvatarViewer from "./AvatarViewer";
 
-export default function Hero() {
+export default function Hero({ apiMessage }) {
   return (
     <motion.section
       id="hero"
@@ -33,21 +33,21 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="text-xl h-[40px] mb-6"
         >
-         <TypeAnimation
+          <TypeAnimation
             sequence={[
               "Automation Lover 🤖",
-                2000,
-                "DevOps Engineer 🚀",
-                2000,
-                "Fullstack Developer 🧑‍💻",
-                2000,
-              "Cloud Enthusiast 🌐☁️", 
+              2000,
+              "DevOps Engineer 🚀",
+              2000,
+              "Fullstack Developer 🧑‍💻",
+              2000,
+              "Cloud Enthusiast 🌐☁️",
               2000,
             ]}
             wrapper="span"
             speed={50}
             repeat={Infinity}
-/>
+          />
         </motion.div>
 
         <div className="mt-6 flex gap-4 justify-center md:justify-start">
@@ -75,6 +75,13 @@ export default function Hero() {
         <p className="mt-8 text-white text-lg italic">
           "Building bridges between code, infrastructure & people."
         </p>
+
+        {/* ✔️ מציגים הודעה מה־API */}
+        {apiMessage && (
+          <p className="mt-4 text-blue-300 text-md">
+            📡 Message from API: {apiMessage}
+          </p>
+        )}
       </div>
     </motion.section>
   );
