@@ -58,3 +58,16 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-backend:latest ./backend
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-backend:latest
+
+  deploy-to-render:
+        runs-on: ubuntu-latest
+        needs: docker-push
+
+        steps:
+          - name: Deploy Frontend to Render
+            run: |
+              curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_FRONTEND }}
+
+          - name: Deploy Backend to Render
+            run: |
+              curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_BACKEND }}
