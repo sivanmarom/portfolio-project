@@ -10,9 +10,13 @@ import Resume from './components/Resume';
 function App() {
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-  const apiUrl = `http://${window.location.hostname}:5000/api/hello`;
-  fetch(apiUrl)
+ const backendUrl = window.location.hostname === "localhost"
+  ? "http://localhost:5000"
+  : "https://portfolio-backend-5aat.onrender.com";
+
+
+useEffect(() => {
+  fetch(`${backendUrl}/api/hello`)
     .then(res => res.json())
     .then(data => setMessage(data.message))
     .catch(err => console.error("API Error:", err));
