@@ -7,9 +7,9 @@ const projects = [
     link: "https://github.com/sivanmarom/portfolio-project",
   },
   {
-    title: "AI-Powered Education Platform",
+    title: "🚀 FlaskOps – CI/CD for Flask on Kubernetes",
     description: "Fullstack app using Django, React, and AI APIs to deliver personalized learning experiences.",
-    link: "https://github.com/sivanmarom/ai-edu-platform",
+    link: "https://github.com/sivanmarom/FlaskOps-CI-CD-for-Flask-on-Kubernetes",
   },
   {
     title: "Cloud Infrastructure Automation",
