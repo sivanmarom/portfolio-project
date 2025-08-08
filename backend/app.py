@@ -2,6 +2,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from visitors import bp as visitors_bp  # אם הקובץ באותה תיקייה
+from messages import bp as messages_bp
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -12,6 +13,7 @@ def hello():
 
 # register visitors API
 app.register_blueprint(visitors_bp)
+app.register_blueprint(messages_bp)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
