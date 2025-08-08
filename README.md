@@ -4,16 +4,18 @@
 [![Dockerized](https://img.shields.io/badge/Docker-multi--service-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)]()
 
-A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** and **Flask (backend)**, containerized with **Docker**, and deployed via a **CI/CD pipeline**.
+A personal **DevOps + Full-Stack** portfolio built with **React (frontend)** and **Flask (backend)**, containerized with **Docker**, and deployed via a **CI/CD pipeline**.
 
 ---
 
 ## ✨ Features
 - Containerized frontend and backend (Docker)
 - Automated **build → test → push → deploy** with GitHub Actions
-- SEO‑friendly project pages with tags & highlights
+- SEO-friendly project pages with tags & highlights
 - Clean data model for projects (title, slug, tags, highlights, status)
-- Ready for deployment on Render/any Docker‑friendly host
+- Ready for deployment on Render/any Docker-friendly host
+- **🔢 Visitor Tracking** – Counts and stores total site visits in a database and displays the counter in the UI
+- **📩 Contact Form Storage** – Sends messages via EmailJS **and** stores them securely in the backend database for later viewing
 
 ---
 
@@ -24,17 +26,15 @@ A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** a
 - **Containers:** Docker / Docker Compose
 - **CI/CD:** GitHub Actions (build, docker push, deploy)
 - **Hosting:** Render (example)
+- **Database:** PostgreSQL (Render Cloud Database)
 
 ---
 
 ## 🚀 CI/CD Workflow
 
-Below is the current pipeline: **build-and-test → docker-push → deploy-to-render**
-
+Current pipeline: **build-and-test → docker-push → deploy-to-render**
 
 ![WhatsApp Image 2025-08-08 at 12 29 45](https://github.com/user-attachments/assets/c976ef9c-b6a7-4aa0-af3c-bdc6b7107ad3)
-
-
 
 ---
 
@@ -102,6 +102,51 @@ const projects = [
 
 ---
 
+## 📡 API Overview
+
+### **Visitor Counter**
+- **Endpoint:** `GET /api/visitors`
+- **Description:** Returns the total number of unique visits recorded in the PostgreSQL database.
+- - **Frontend Integration:** The counter is shown in the top-right corner of the navbar.
+- **Example Response:**
+```json
+{ "ok": true, "total": 42 }
+```
+**Example Frontend Display:**
+![WhatsApp Image 2025-08-08 at 17 39 02 (1)](https://github.com/user-attachments/assets/11eda65f-8e79-40e0-95d9-edc99a090cce)
+
+
+### **Add Visit**
+- **Endpoint:** `POST /api/visitors`
+- **Description:** Increments the visit counter in the database when a new visitor arrives.
+- **Example Response:**
+```json
+{ "ok": true, "message": "Visit recorded" }
+```
+
+### **Contact Form Submission**
+- **Endpoint:** `POST /api/contact`
+- **Description:** Saves contact form submissions to the database **and** sends them via EmailJS.
+- **Payload Example:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "message": "Hello!"
+}
+```
+- **Example Response:**
+```json
+{ "ok": true, "message": "Saved to DB" }
+```
+
+### **View Saved Messages**
+- **Endpoint:** `GET /api/messages`
+- **Auth:** Requires `X-Admin-Token` header or `?token=` query parameter.
+- **Description:** Returns a paginated list of saved contact messages.
+
+---
+
 ## 🧪 Local Development
 
 **Docker Compose (recommended)**
@@ -145,6 +190,3 @@ For suggestions, improvements, or collaboration:
 - 📧 [Sivmarom@gmail.com](mailto:Sivmarom@gmail.com)
 - 🔗 [LinkedIn](https://www.linkedin.com/in/sivan-marom/)
 - 💻 [GitHub](https://github.com/sivanmarom)
-
----
-
