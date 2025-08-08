@@ -1,14 +1,25 @@
-version: '3.8'
+version: "3.8"
 
 services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      # כתובת ה-Postgres החיצוני (Render). אפשר גם בלי +psycopg2 אם מותקן psycopg2-binary.
+      DATABASE_URL: "postgresql+psycopg2://visits_doh2_user:iLtRcWYAwBFpMhcsOSLYkqKLlXX4LbMS@dpg-d2asrl49c44c7382jbug-a/visits_doh2"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:5000/api/hello || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
   frontend:
     build: ./frontend
     ports:
       - "3000:3000"
     depends_on:
-      - backend
-
-  backend:
-    build: ./backend
-    ports:
-      - "5000:5000"
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
