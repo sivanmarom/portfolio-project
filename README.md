@@ -14,6 +14,8 @@ A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** a
 - SEO‑friendly project pages with tags & highlights
 - Clean data model for projects (title, slug, tags, highlights, status)
 - Ready for deployment on Render/any Docker‑friendly host
+-	🔢 Visitor Tracking – Counts and stores site visits in the backend database
+-	📩 Contact Form Storage – Sends messages via EmailJS and stores them securely in the backend database for later viewing
 
 ---
 
@@ -24,6 +26,7 @@ A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** a
 - **Containers:** Docker / Docker Compose
 - **CI/CD:** GitHub Actions (build, docker push, deploy)
 - **Hosting:** Render (example)
+- Database: PostgreSQL (Render Cloud Database)
 
 ---
 
