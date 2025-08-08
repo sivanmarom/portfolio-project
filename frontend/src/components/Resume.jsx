@@ -15,8 +15,8 @@ export default function Resume() {
 
         {/* Download Button */}
         <div className="mb-10">
-          <a
-            href="/sivan marom.pdf"
+          <a 
+            href="/sivan marom CV.pdf"
             download
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-6 py-3 rounded-full hover:bg-white/20 transition text-white border border-white"
           >
