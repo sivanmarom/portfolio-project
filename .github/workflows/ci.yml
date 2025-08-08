@@ -20,7 +20,7 @@ jobs:
       # ניצור קובץ env מקומי כדי ש-docker compose יטען אותו בוודאות
       - name: Create env file for compose
         run: |
-          echo "DATABASE_URL=${{ postgresql://visits_doh2_user:iLtRcWYAwBFpMhcsOSLYkqKLlXX4LbMS@dpg-d2asrl49c44c7382jbug-a.oregon-postgres.render.com/visits_doh2 }}" > .env.ci
+          echo "DATABASE_URL=${{postgresql://visits_doh2_user:iLtRcWYAwBFpMhcsOSLYkqKLlXX4LbMS@dpg-d2asrl49c44c7382jbug-a.oregon-postgres.render.com/visits_doh2 }}" > .env.ci
 
       - name: Docker Compose Up (CI)
         run: |
