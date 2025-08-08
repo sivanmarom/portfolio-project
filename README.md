@@ -107,10 +107,14 @@ const projects = [
 ### **Visitor Counter**
 - **Endpoint:** `GET /api/visitors`
 - **Description:** Returns the total number of unique visits recorded in the PostgreSQL database.
+- - **Frontend Integration:** The counter is shown in the top-right corner of the navbar.
 - **Example Response:**
 ```json
 { "ok": true, "total": 42 }
 ```
+**Example Frontend Display:**
+![WhatsApp Image 2025-08-08 at 17 39 02 (1)](https://github.com/user-attachments/assets/11eda65f-8e79-40e0-95d9-edc99a090cce)
+
 
 ### **Add Visit**
 - **Endpoint:** `POST /api/visitors`
