@@ -6,8 +6,8 @@ services:
     ports:
       - "5000:5000"
     environment:
-      # כתובת ה-Postgres החיצוני (Render). אפשר גם בלי +psycopg2 אם מותקן psycopg2-binary.
-      DATABASE_URL: "postgresql+psycopg2://visits_doh2_user:iLtRcWYAwBFpMhcsOSLYkqKLlXX4LbMS@dpg-d2asrl49c44c7382jbug-a/visits_doh2"
+      # שימי לב ל-?sslmode=require בסוף!
+      DATABASE_URL: "postgresql+psycopg2://visits_doh2_user:iLtRcWYAwBFpMhcsOSLYkqKLlXX4LbMS@dpg-d2asrl49c44c7382jbug-a/visits_doh2?sslmode=require"
     healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:5000/api/hello || exit 1"]
       interval: 5s
