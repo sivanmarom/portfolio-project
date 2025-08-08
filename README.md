@@ -4,18 +4,18 @@
 [![Dockerized](https://img.shields.io/badge/Docker-multi--service-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)]()
 
-A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** and **Flask (backend)**, containerized with **Docker**, and deployed via a **CI/CD pipeline**.
+A personal **DevOps + Full-Stack** portfolio built with **React (frontend)** and **Flask (backend)**, containerized with **Docker**, and deployed via a **CI/CD pipeline**.
 
 ---
 
 ## ✨ Features
 - Containerized frontend and backend (Docker)
 - Automated **build → test → push → deploy** with GitHub Actions
-- SEO‑friendly project pages with tags & highlights
+- SEO-friendly project pages with tags & highlights
 - Clean data model for projects (title, slug, tags, highlights, status)
-- Ready for deployment on Render/any Docker‑friendly host
--	🔢 Visitor Tracking – Counts and stores site visits in the backend database
--	📩 Contact Form Storage – Sends messages via EmailJS and stores them securely in the backend database for later viewing
+- Ready for deployment on Render/any Docker-friendly host
+- **🔢 Visitor Tracking** – Counts and stores total site visits in a database and displays the counter in the UI
+- **📩 Contact Form Storage** – Sends messages via EmailJS **and** stores them securely in the backend database for later viewing
 
 ---
 
@@ -26,18 +26,15 @@ A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** a
 - **Containers:** Docker / Docker Compose
 - **CI/CD:** GitHub Actions (build, docker push, deploy)
 - **Hosting:** Render (example)
-- Database: PostgreSQL (Render Cloud Database)
+- **Database:** PostgreSQL (Render Cloud Database)
 
 ---
 
 ## 🚀 CI/CD Workflow
 
-Below is the current pipeline: **build-and-test → docker-push → deploy-to-render**
-
+Current pipeline: **build-and-test → docker-push → deploy-to-render**
 
 ![WhatsApp Image 2025-08-08 at 12 29 45](https://github.com/user-attachments/assets/c976ef9c-b6a7-4aa0-af3c-bdc6b7107ad3)
-
-
 
 ---
 
@@ -53,7 +50,6 @@ portfolio-project/
 ├── scripts/                  # helper scripts (deploy, cleanup)
 ├── README.md
 └── docker-compose.yml
-```
 
 ---
 
