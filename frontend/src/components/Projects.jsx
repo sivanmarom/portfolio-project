@@ -3,19 +3,43 @@ import { motion } from 'framer-motion';
 const projects = [
   {
     title: "DevOps Portfolio Site",
-    description: "Personal website built with React, Flask, Docker, and CI/CD pipelines. Showcases DevOps & fullstack skills.",
+    slug: "devops-portfolio-site",
+    description: "Personal site built with React + Flask, containerized with Docker and deployed via CI/CD.",
     link: "https://github.com/sivanmarom/portfolio-project",
+    tags: ["React","Flask","Docker","CI/CD","Nginx"],
+    highlights: [
+      "Containerized frontend and backend (Docker)",
+      "Automated build & deploy pipeline (CI/CD)",
+      "SEO-friendly project page templates"
+    ],
+    status: "In Progress"
   },
   {
-    title: "🚀 FlaskOps – CI/CD for Flask on Kubernetes",
-    description: "Fullstack app using Django, React, and AI APIs to deliver personalized learning experiences.",
+    title: "FlaskOps – CI/CD for Flask on Kubernetes",
+    slug: "flaskops-ci-cd",
+    description: "Production-style CI/CD for a Flask app on Kubernetes (EKS) using Docker, Terraform, Helm, and Jenkins, with Prometheus/Grafana monitoring.",
     link: "https://github.com/sivanmarom/FlaskOps-CI-CD-for-Flask-on-Kubernetes",
+    tags: ["Flask","Docker","Kubernetes","Helm","CI/CD","Jenkins","AWS","Terraform","Prometheus","Grafana"],
+    highlights: [
+      "Helm chart with Ingress for Flask service",
+      "Pipeline: build → test → push → deploy",
+      "Health checks and controlled rollouts"
+    ],
+    status: "Completed"
   },
   {
-    title: "Cloud Infrastructure Automation",
-    description: "Infrastructure-as-Code using Terraform, deployed to AWS with monitoring via Prometheus & Grafana.",
-    link: "https://github.com/sivanmarom/devops-infra-project",
-  },
+    title: "Kubernetes & Helm – AI Image Processing Pipeline",
+    slug: "k8s-helm-image-pipeline",
+    description: "K8s microservices with Helm, RabbitMQ, and PVCs. Web API → Queue → Consumer with E2E tests.",
+    link: "https://github.com/sivanmarom/DevInsight-AI-Image-Analyzer",
+    tags: ["Kubernetes","Helm","RabbitMQ","Docker","Python","DevOps"],
+    highlights: [
+      "Helm charts per service (web, queue, consumer)",
+      "Persistent volumes and message durability",
+      "RabbitMQ management UI and end-to-end testing flow"
+    ],
+    status: "Completed (Local: Minikube)"
+  }
 ];
 
 export default function Projects() {
