@@ -1,155 +1,138 @@
+# DevOps Portfolio Site
 
-# 🌐 Personal Portfolio – React & Flask
+[![Build Status](https://img.shields.io/badge/CI-GitHub%20Actions-success)]()
+[![Dockerized](https://img.shields.io/badge/Docker-multi--service-blue)]()
+[![License](https://img.shields.io/badge/license-MIT-lightgrey)]()
 
-A fully containerized personal portfolio website built with **React** for the frontend and **Flask** for the backend. This project showcases frontend design, backend integration, CI/CD automation, and a modern DevOps deployment pipeline.
-
----
-
-## 🖥️ Live Website Features
-
-This portfolio is designed to be both visually appealing and technically impressive.
-
-### ✨ Main Sections
-
-| Section     | Description |
-|-------------|-------------|
-| `Hero`      | Eye-catching intro with your name, dynamic subtitle (react-type-animation), navigation buttons, and avatar. |
-| `About`     | A short personal introduction with professional background. |
-| `Skills`    | Visual representation of technologies you're proficient in. |
-| `Resume`    | Button to download resume and/or link to LinkedIn profile. |
-| `Projects`  | Selected personal projects with descriptions and links. |
-| `Contact`   | Contact form connected to EmailJS + direct links to GitHub, Email, LinkedIn. |
-| `Navigation`| Sticky scroll-based navigation between sections. |
+A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** and **Flask (backend)**, containerized with **Docker**, and deployed via a **CI/CD pipeline**.
 
 ---
 
-## 🧱 Tech Stack
-
-| Area             | Technologies                            |
-|------------------|------------------------------------------|
-| Frontend         | React, TailwindCSS, Framer Motion        |
-| Backend          | Flask                                    |
-| CI/CD            | GitHub Actions                           |
-| DevOps           | Docker, Docker Compose                   |
-| Container Registry | DockerHub                            |
-| Email Services   | EmailJS                                  |
-| Deployment       | Render.com (Web Service + Static Site)   |
+## ✨ Features
+- Containerized frontend and backend (Docker)
+- Automated **build → test → push → deploy** with GitHub Actions
+- SEO‑friendly project pages with tags & highlights
+- Clean data model for projects (title, slug, tags, highlights, status)
+- Ready for deployment on Render/any Docker‑friendly host
 
 ---
 
-## ✅ What’s Done So Far
-
-### 📦 Development
-
-- Built all React components (Hero, Skills, Projects, Contact, etc.).
-- Structured code into clean and reusable components.
-- Implemented basic backend API endpoint: `GET /api/hello`.
-- Enabled CORS support with `flask-cors`.
-
----
-
-### 🐳 Docker
-
-- Created separate `Dockerfile`s for `frontend` and `backend`.
-- Wrote `docker-compose.yml` to orchestrate both services.
-- Ensured networking between containers (frontend uses `backend` hostname).
-- CORS issues resolved for cross-service requests.
+## 🧰 Tech Stack
+- **Frontend:** React
+- **Backend:** Flask (Python)
+- **Web:** Nginx (optional)
+- **Containers:** Docker / Docker Compose
+- **CI/CD:** GitHub Actions (build, docker push, deploy)
+- **Hosting:** Render (example)
 
 ---
 
-### 🧪 CI with GitHub Actions
+## 🚀 CI/CD Workflow
 
-- Created workflow: `CI with Docker Compose` that:
-  - Checks out the repo
-  - Runs `docker-compose up --build`
-  - Verifies backend with `curl http://localhost:5000/api/hello`
-  - Verifies frontend with `curl http://localhost:3000`
-  - Shuts down containers with `docker-compose down`
+Below is the current pipeline: **build-and-test → docker-push → deploy-to-render**
+
+![CI/CD Pipeline](![WhatsApp Image 2025-08-08 at 11 37 02](https://github.com/user-attachments/assets/6f9a3a38-8f45-4605-972a-6c645f0f9007)
+)
 
 ---
 
-### 🐋 DockerHub Integration
-
-- Added `docker-push` job to:
-  - Build and tag Docker images (`latest`)
-  - Push frontend & backend images to DockerHub
-- Uses GitHub Secrets for secure authentication (`DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`)
-
----
-
-### ☁️ Deployment to Render
-
-- Manually created two Render services:
-  - `portfolio-frontend`: Static Site
-  - `portfolio-backend`: Web Service on port 5000
-- Dynamic domain handling in frontend via `window.location.hostname`
-- Added GitHub Action `deploy-to-render` job to:
-  - Trigger deployment via Render Deploy Hook Web URLs
-  - Ensures latest Docker images are used automatically
+## 🧱 Folder Structure (suggested)
+```text
+portfolio-project/
+├── frontend/                 # React app
+├── backend/                  # Flask app
+├── docker/                   # Dockerfiles, Nginx (if used)
+├── .github/workflows/        # ci.yml (build → push → deploy)
+├── public/ or docs/          # assets (images for README / Pages)
+├── src/                      # shared utilities (if any)
+├── scripts/                  # helper scripts (deploy, cleanup)
+├── README.md
+└── docker-compose.yml
+```
 
 ---
 
-## 🚀 What's Next?
+## 🗂️ Project Cards Data
 
-### 🔧 Backend Improvements
-
-- Add database (PostgreSQL or SQLite) for dynamic project management.
-- Build full RESTful API with CRUD support for portfolio content.
-- Add admin dashboard to manage messages from contact form.
-- Extend Flask structure with Blueprints, error handling, and logging.
-
-### 📈 Production Upgrades
-
-- Add analytics (Google Analytics 4 / Hotjar).
-- Integrate Sentry or similar tool for backend error logging.
-- Set up staging environment for testing changes before production.
+```js
+const projects = [
+  {
+    title: "DevOps Portfolio Site",
+    slug: "devops-portfolio-site",
+    description: "Personal site built with React + Flask, containerized with Docker and deployed via CI/CD.",
+    link: "https://github.com/sivanmarom/portfolio-project",
+    tags: ["React","Flask","Docker","CI/CD","Nginx"],
+    highlights: [
+      "Containerized frontend and backend (Docker)",
+      "Automated build & deploy pipeline (CI/CD)",
+      "SEO-friendly project page templates"
+    ],
+    status: "In Progress"
+  },
+  {
+    title: "FlaskOps – CI/CD for Flask on Kubernetes",
+    slug: "flaskops-ci-cd",
+    description: "Production-style CI/CD for a Flask app on Kubernetes (EKS) using Docker, Terraform, Helm, and Jenkins, with Prometheus/Grafana monitoring.",
+    link: "https://github.com/sivanmarom/FlaskOps-CI-CD-for-Flask-on-Kubernetes",
+    tags: ["Flask","Docker","Kubernetes","Helm","CI/CD","Jenkins","AWS","Terraform","Prometheus","Grafana"],
+    highlights: [
+      "Helm chart with Ingress for Flask service",
+      "Pipeline: build → test → push → deploy",
+      "Health checks and controlled rollouts"
+    ],
+    status: "Completed"
+  },
+  {
+    title: "Kubernetes & Helm – AI Image Processing Pipeline",
+    slug: "k8s-helm-image-pipeline",
+    description: "K8s microservices with Helm, RabbitMQ, and PVCs. Web API → Queue → Consumer with E2E tests.",
+    link: "https://github.com/sivanmarom/DevInsight-AI-Image-Analyzer",
+    tags: ["Kubernetes","Helm","RabbitMQ","Docker","Python","DevOps"],
+    highlights: [
+      "Helm charts per service (web, queue, consumer)",
+      "Persistent volumes and message durability",
+      "RabbitMQ management UI and end-to-end testing flow"
+    ],
+    status: "Completed (Local: Minikube)"
+  }
+];
+```
 
 ---
 
-## 🛠 Local Development
+## 🧪 Local Development
 
+**Docker Compose (recommended)**
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/portfolio.git
-cd portfolio
-
-# Run using Docker Compose
 docker compose up --build
+# Frontend -> http://localhost:3000
+# Backend  -> http://localhost:5000
 ```
 
-#### Default URLs:
-- Frontend: [http://localhost:3000](http://localhost:3000)
-- Backend: [http://localhost:5000/api/hello](http://localhost:5000/api/hello)
+**Or, run separately**
+```bash
+# Frontend
+cd frontend && npm install && npm start
 
----
-
-## 📁 Project Structure
-
-```
-portfolio/
-│
-├── frontend/                  # React app
-│   ├── src/
-│   │   ├── components/        # Hero, About, Skills, Projects, Contact, etc.
-│   │   └── App.jsx
-│   └── Dockerfile
-│
-├── backend/                   # Flask API
-│   ├── app.py
-│   └── Dockerfile
-│
-├── docker-compose.yml         # Runs both services together
-└── .github/
-    └── workflows/
-        └── ci.yml             # GitHub Actions workflow
+# Backend
+cd backend && pip install -r requirements.txt && flask run
 ```
 
 ---
-## 💬 Contact
 
-For suggestions, improvements, or collaboration:
-- 📧 [Sivmarom@gmail.com](mailto:Sivmarom@gmail.com)
-- 🔗 [LinkedIn](https://www.linkedin.com/in/sivan-marom/)
-- 💻 [GitHub](https://github.com/sivanmarom)
+## 📦 Deployment (Render example)
+- GitHub Actions builds images and pushes to registry.
+- The `deploy-to-render` job triggers the Render deploy hook.
 
 ---
+
+## 🗺️ Roadmap
+- Lighthouse checks in CI for performance/SEO
+- Visual regression tests for the portfolio grid
+- Add project detail pages (route per `slug`)
+- Dark mode toggle + keyboard nav
+
+---
+
+## 📄 License
+MIT
