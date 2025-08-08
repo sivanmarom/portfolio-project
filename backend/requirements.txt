@@ -1,2 +1,4 @@
-flask
-flask-cors
+Flask
+Flask-Cors
+SQLAlchemy
+psycopg2-binary
