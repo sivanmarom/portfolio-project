@@ -1,3 +1,4 @@
+# docker-compose.ci.yml
 version: "3.8"
 
 services:
@@ -5,12 +6,12 @@ services:
     build: ./backend
     ports: ["5000:5000"]
     environment:
-      DATABASE_URL: ${DATABASE_URL}         # יגיע מה-env file
+      DATABASE_URL: ${DATABASE_URL}
     healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:5000/api/hello || exit 1"]
       interval: 5s
       timeout: 3s
-      retries: 20
+      retries: 25
 
   frontend:
     build: ./frontend
@@ -18,3 +19,9 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+    # בריאות לפרונט
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"http=require('http');http.get('http://localhost:3000',res=>process.exit(res.statusCode===200?0:1)).on('error',()=>process.exit(1))\""]
+      interval: 5s
+      timeout: 3s
+      retries: 25
