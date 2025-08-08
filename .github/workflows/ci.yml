@@ -17,16 +17,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # ניצור קובץ env מקומי כדי ש-docker compose יטען אותו בוודאות
-      - name: Create env file for compose
-        run: |
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env.ci
-
       - name: Docker Compose Up (CI)
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}   # External URL עם ?sslmode=require
         run: |
-          docker compose --env-file .env.ci -f docker-compose.ci.yml up -d --build
+          docker compose -f docker-compose.ci.yml up -d --build
           echo "Waiting for backend to be healthy..."
-          for i in {1..20}; do
+          for i in {1..30}; do
             if curl -sf http://localhost:5000/api/hello > /dev/null; then
               echo "Backend is up"; break
             fi
