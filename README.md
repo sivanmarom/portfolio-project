@@ -145,12 +145,11 @@ portfolio/
 ```
 
 ---
-
 ## 💬 Contact
 
 For suggestions, improvements, or collaboration:
 - 📧 [Sivmarom@gmail.com](mailto:Sivmarom@gmail.com)
-- 🔗 [LinkedIn]([https://www.linkedin.com/in/sivan-marom](https://github.com/sivanmarom)
-- 💻 [GitHub](https://github.com/YOUR_USERNAME)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/sivan-marom/)
+- 💻 [GitHub](https://github.com/sivanmarom)
 
 ---
