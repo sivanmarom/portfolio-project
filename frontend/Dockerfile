@@ -15,7 +15,7 @@ ENV REACT_APP_EMAILJS_PUBLIC_KEY=$REACT_APP_EMAILJS_PUBLIC_KEY
 
 
 COPY . .
-COPY .env .env
+
 RUN npm run build
 
 # serve
