@@ -116,7 +116,7 @@ export default function Contact() {
           />
           <button
             type="submit"
-            disabled={!cfg} // ← חוסם שליחה אם הקונפיג עוד לא נטען
+            
             className="bg-[#145174] text-white px-6 py-2 rounded-xl shadow hover:bg-[#0b2e42] transition disabled:opacity-50"
           >
             Send Message
