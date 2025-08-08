@@ -32,7 +32,8 @@ A personal **DevOps + Full‑Stack** portfolio built with **React (frontend)** a
 Below is the current pipeline: **build-and-test → docker-push → deploy-to-render**
 
 
-![WhatsApp Image 2025-08-08 at 11 37 02](https://github.com/user-attachments/assets/5509cd90-4a05-49f7-b3e7-922b1e98c4c3)
+![WhatsApp Image 2025-08-08 at 12 29 45](https://github.com/user-attachments/assets/c976ef9c-b6a7-4aa0-af3c-bdc6b7107ad3)
+
 
 
 ---
