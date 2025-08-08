@@ -83,9 +83,12 @@ jobs:
 
       - name: Build and Push Frontend Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-frontend:latest ./frontend
+          docker build \
+            --build-arg REACT_APP_EMAILJS_SERVICE_ID=${{ secrets.EMAILJS_SERVICE_ID }} \
+            --build-arg REACT_APP_EMAILJS_TEMPLATE_ID=${{ secrets.EMAILJS_TEMPLATE_ID }} \
+            --build-arg REACT_APP_EMAILJS_PUBLIC_KEY=${{ secrets.PUBLIC_KEY }} \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-frontend:latest ./frontend
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-frontend:latest
-
       - name: Build and Push Backend Image
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-backend:latest ./backend
