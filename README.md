@@ -50,6 +50,7 @@ portfolio-project/
 ├── scripts/                  # helper scripts (deploy, cleanup)
 ├── README.md
 └── docker-compose.yml
+```
 
 ---
 
@@ -101,6 +102,47 @@ const projects = [
 
 ---
 
+## 📡 API Overview
+
+### **Visitor Counter**
+- **Endpoint:** `GET /api/visitors`
+- **Description:** Returns the total number of unique visits recorded in the PostgreSQL database.
+- **Example Response:**
+```json
+{ "ok": true, "total": 42 }
+```
+
+### **Add Visit**
+- **Endpoint:** `POST /api/visitors`
+- **Description:** Increments the visit counter in the database when a new visitor arrives.
+- **Example Response:**
+```json
+{ "ok": true, "message": "Visit recorded" }
+```
+
+### **Contact Form Submission**
+- **Endpoint:** `POST /api/contact`
+- **Description:** Saves contact form submissions to the database **and** sends them via EmailJS.
+- **Payload Example:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "message": "Hello!"
+}
+```
+- **Example Response:**
+```json
+{ "ok": true, "message": "Saved to DB" }
+```
+
+### **View Saved Messages**
+- **Endpoint:** `GET /api/messages`
+- **Auth:** Requires `X-Admin-Token` header or `?token=` query parameter.
+- **Description:** Returns a paginated list of saved contact messages.
+
+---
+
 ## 🧪 Local Development
 
 **Docker Compose (recommended)**
@@ -144,6 +186,3 @@ For suggestions, improvements, or collaboration:
 - 📧 [Sivmarom@gmail.com](mailto:Sivmarom@gmail.com)
 - 🔗 [LinkedIn](https://www.linkedin.com/in/sivan-marom/)
 - 💻 [GitHub](https://github.com/sivanmarom)
-
----
-
