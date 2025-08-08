@@ -50,10 +50,10 @@ export default function Navigation() {
 
         {/* Right Side: Dark Mode + Visits + Hamburger */}
         <div className="flex items-center gap-4">
-          {/* Visits Counter */}
+          {/* Visits Counter - Always Visible */}
           <span
-            className="hidden md:inline-block text-xs px-2 py-1 rounded-full 
-                       bg-white/20 dark:bg-white/10 border border-white/20"
+            className="text-xs px-2 py-1 rounded-full 
+                      bg-white/20 dark:bg-white/10 border border-white/20"
             title="Total visits (since launch)"
           >
             Visits: {stats ? stats.total.toLocaleString() : "..."}
