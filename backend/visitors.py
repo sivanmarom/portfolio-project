@@ -1,8 +1,8 @@
 # backend/visitors.py
 from flask import Blueprint, jsonify, request
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import Integer, String, select
-from .db import Base, engine, get_session
+from sqlalchemy import Integer, String
+from db import Base, engine, get_session   # ← ייבוא מוחלט
 import hashlib
 
 bp = Blueprint("visitors", __name__)
@@ -17,19 +17,21 @@ class Seen(Base):
     __tablename__ = "seen"
     uid: Mapped[str] = mapped_column(String(64), primary_key=True)
 
-# create tables if missing
+# create tables
 Base.metadata.create_all(engine)
 
 def is_bot(ua: str | None) -> bool:
     u = (ua or "").lower()
-    return any(t in u for t in ["bot","crawler","spider","preview","curl"])
+    return any(t in u for t in ["bot", "crawler", "spider", "preview", "curl"])
 
 def get_stats():
-    with get_session() as s:
+    from sqlalchemy.orm import Session
+    with get_session() as s:  # type: Session
         ctr = s.get(Counter, 1)
         if not ctr:
             ctr = Counter(id=1, total=0, uniques=0)
-            s.add(ctr); s.commit()
+            s.add(ctr)
+            s.commit()
         return {"total": ctr.total, "uniques": ctr.uniques}
 
 @bp.post("/api/visit")
@@ -40,7 +42,8 @@ def visit():
     raw = f"{request.remote_addr}|{request.headers.get('user-agent','')}"
     uid = hashlib.sha256(raw.encode()).hexdigest()[:16]
 
-    with get_session() as s:
+    from sqlalchemy.orm import Session
+    with get_session() as s:  # type: Session
         ctr = s.get(Counter, 1)
         if not ctr:
             ctr = Counter(id=1, total=0, uniques=0)
@@ -52,6 +55,7 @@ def visit():
             ctr.uniques += 1
 
         s.commit()
+
     return jsonify(ok=True, **get_stats())
 
 @bp.get("/api/visits")
