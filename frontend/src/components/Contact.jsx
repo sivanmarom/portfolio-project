@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { MdEmail } from 'react-icons/md';
@@ -8,27 +8,42 @@ export default function Contact() {
   const form = useRef();
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
+  const [cfg, setCfg] = useState(null); // ← נשמר כאן הקונפיג מהשרת
 
   const backendUrl =
     window.location.hostname === 'localhost'
       ? 'http://localhost:5000'
       : 'https://portfolio-backend-5aat.onrender.com';
 
+  // טוענים את ההגדרות מה־Backend
+  useEffect(() => {
+    fetch(`${backendUrl}/api/emailjs`)
+      .then((res) => res.json())
+      .then(setCfg)
+      .catch((err) => console.error('Failed to load EmailJS config', err));
+  }, []);
+
   const sendEmail = async (e) => {
     e.preventDefault();
     setSent(false);
     setError(false);
 
+    if (!cfg) {
+      console.error("EmailJS config not loaded");
+      setError(true);
+      return;
+    }
+
     try {
-      // שליחת המייל הרגילה
+      // שליחת המייל
       await emailjs.sendForm(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        cfg.serviceId,
+        cfg.templateId,
         form.current,
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        cfg.publicKey
       );
 
-      // שמירת הנתונים ב־DB
+      // שמירה ב־DB
       const formData = new FormData(form.current);
       const payload = {
         name: formData.get('user_name'),
@@ -65,30 +80,18 @@ export default function Contact() {
           Want to collaborate, offer an opportunity, or just say hi? Feel free to reach out!
         </p>
 
-        {/* Social Links */}
         <div className="flex justify-center gap-8 mb-10 text-white text-2xl">
           <a href="mailto:sivmarom@gmail.com" className="hover:text-blue-300 transition">
             <MdEmail />
           </a>
-          <a
-            href="https://github.com/sivanmarom"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-300 transition"
-          >
+          <a href="https://github.com/sivanmarom" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition">
             <FaGithub />
           </a>
-          <a
-            href="https://www.linkedin.com/in/sivan-marom/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-300 transition"
-          >
+          <a href="https://www.linkedin.com/in/sivan-marom/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition">
             <FaLinkedin />
           </a>
         </div>
 
-        {/* Contact Form */}
         <form ref={form} onSubmit={sendEmail} className="space-y-4 max-w-xl mx-auto">
           <input
             type="text"
@@ -113,13 +116,13 @@ export default function Contact() {
           />
           <button
             type="submit"
-            className="bg-[#145174] text-white px-6 py-2 rounded-xl shadow hover:bg-[#0b2e42] transition"
+            disabled={!cfg} // ← חוסם שליחה אם הקונפיג עוד לא נטען
+            className="bg-[#145174] text-white px-6 py-2 rounded-xl shadow hover:bg-[#0b2e42] transition disabled:opacity-50"
           >
             Send Message
           </button>
         </form>
 
-        {/* Feedback */}
         {sent && <p className="text-green-400 mt-4">✅ Your message has been sent!</p>}
         {error && <p className="text-red-400 mt-4">❌ Failed to send. Please try again.</p>}
       </div>
